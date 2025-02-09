@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace StockMarket.Domain.Models
 {
-    public class Account
+    public class Account : DomainObject
     {
-        public int Id { get; set; }
         public User AccountHolder { get; set; }
         public double Balance { get; set; }
         public IEnumerable<AssetTransaction> AssetTransactions { get; set; }

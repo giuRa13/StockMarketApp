@@ -12,8 +12,8 @@ using StockMarket.EntityFramework;
 namespace StockMarket.EntityFramework.Migrations
 {
     [DbContext(typeof(StockMarketDbContext))]
-    [Migration("20250208223601_add-dates")]
-    partial class adddates
+    [Migration("20250208225207_initial")]
+    partial class initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

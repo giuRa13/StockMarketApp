@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
@@ -17,7 +18,9 @@ namespace StockMarket.EntityFramework.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Username = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Username = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Password = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    DateJoined = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -54,7 +57,8 @@ namespace StockMarket.EntityFramework.Migrations
                     IsPurchase = table.Column<bool>(type: "bit", nullable: false),
                     Stock_Symbol = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Stock_PricePerShare = table.Column<double>(type: "float", nullable: false),
-                    SharesAmount = table.Column<int>(type: "int", nullable: false)
+                    SharesAmount = table.Column<int>(type: "int", nullable: false),
+                    DateProcessed = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
