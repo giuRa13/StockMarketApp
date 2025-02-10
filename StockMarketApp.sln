@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.12.35707.178 d17.12
+VisualStudioVersion = 17.12.35707.178
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StockMarket.Domain", "StockMarket.Domain\StockMarket.Domain.csproj", "{FADF72C8-3B77-4E8D-9ED6-534B26984397}"
 EndProject
@@ -10,6 +10,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp1", "ConsoleApp1\ConsoleApp1.csproj", "{B95B5B65-0141-48B5-972B-285E8DAA4929}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StockMarket.WPF", "StockMarket.WPF\StockMarket.WPF.csproj", "{92741592-1DF1-45F8-959A-1604C6F751E9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StockMarket.FMPApi", "StockMarket.FMPApi\StockMarket.FMPApi.csproj", "{6BE8D319-E9A4-4D40-9110-B37658AA5BF0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{92741592-1DF1-45F8-959A-1604C6F751E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{92741592-1DF1-45F8-959A-1604C6F751E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{92741592-1DF1-45F8-959A-1604C6F751E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6BE8D319-E9A4-4D40-9110-B37658AA5BF0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6BE8D319-E9A4-4D40-9110-B37658AA5BF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6BE8D319-E9A4-4D40-9110-B37658AA5BF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6BE8D319-E9A4-4D40-9110-B37658AA5BF0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

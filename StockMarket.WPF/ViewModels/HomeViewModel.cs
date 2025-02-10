@@ -8,5 +8,14 @@ namespace StockMarket.WPF.ViewModels
 {
     public class HomeViewModel : ViewModelBase
     {
+        public TopStocksViewModel TopStocksViewModel { get; set; }
+
+
+        public HomeViewModel(TopStocksViewModel topStocksViewModel)
+        {
+            this.TopStocksViewModel = topStocksViewModel;
+        }
+
+        
     }
 }

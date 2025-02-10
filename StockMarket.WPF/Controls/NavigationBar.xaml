@@ -13,9 +13,10 @@
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Grid.Row="0" Text="Stock Market App" Background="{StaticResource BrushYellow1}" />
+        <TextBlock Grid.Row="0" Text="Stock Market App" Background="{StaticResource BrushBlack}" Foreground="{StaticResource BrushYellow1}" Padding="10,10,10,10" FontWeight="Bold" FontSize="16" />
+        <Separator Grid.Row="0" VerticalAlignment="Bottom" Background="{StaticResource BrushBlackFull}" Margin="0"/>
 
-        <Grid Grid.Row="1" Background="{StaticResource BrushYellow2}">
+        <Grid Grid.Row="1" Background="{StaticResource BrushBlack}">
             <Grid.ColumnDefinitions >
                 <ColumnDefinition Width="auto"/>
                 <ColumnDefinition Width="auto"/>
@@ -24,10 +25,12 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <RadioButton Grid.Column="0" Content="Home" Command="{Binding UpdateCurrentViewModelCommand}" CommandParameter="{x:Static nav:ViewType.Home}"/>
-            <RadioButton Grid.Column="1" Content="Portfolio" Command="{Binding UpdateCurrentViewModelCommand}" CommandParameter="{x:Static nav:ViewType.Portfolio}"/>
-            <RadioButton Grid.Column="2" Content="Buy"/>
-            <RadioButton Grid.Column="3" Content="Sell"/>
+            <RadioButton Grid.Column="0" Content="Home" Command="{Binding UpdateCurrentViewModelCommand}" CommandParameter="{x:Static nav:ViewType.Home}" Foreground="{StaticResource BrushYellow1}" Padding="7" VerticalContentAlignment="Center"  BorderThickness="0"/>
+            <RadioButton Grid.Column="1" Content="Portfolio" Command="{Binding UpdateCurrentViewModelCommand}" CommandParameter="{x:Static nav:ViewType.Portfolio}" Foreground="{StaticResource BrushYellow1}" Padding="7" VerticalContentAlignment="Center"  BorderThickness="0"/>
+            <RadioButton Grid.Column="2" Content="Buy" Foreground="{StaticResource BrushYellow1}" Padding="7" VerticalContentAlignment="Center"  BorderThickness="0" />
+            <RadioButton Grid.Column="3" Content="Sell" Foreground="{StaticResource BrushYellow1}" Padding="7" VerticalContentAlignment="Center" BorderThickness="0" />
         </Grid>
+        <Separator Grid.Row="1" VerticalAlignment="Bottom" Background="{StaticResource BrushBlackFull}" Margin="0" MinHeight="5" />
     </Grid>
+    
 </UserControl>

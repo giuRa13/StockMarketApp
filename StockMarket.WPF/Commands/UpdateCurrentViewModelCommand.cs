@@ -1,4 +1,5 @@
-﻿using StockMarket.WPF.States.Navigators;
+﻿using StockMarket.FMPApi.Services;
+using StockMarket.WPF.States.Navigators;
 using StockMarket.WPF.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -34,7 +35,7 @@ namespace StockMarket.WPF.Commands
                 switch (viewType)
                 {
                     case ViewType.Home:
-                        _navigator.CurrentViewModel = new HomeViewModel();
+                        _navigator.CurrentViewModel = new HomeViewModel(TopStocksViewModel.LoadTopStocksViewModel(new TopStocksService()));
                         break;
                     case ViewType.Portfolio:
                         _navigator.CurrentViewModel = new PortfolioViewModel();

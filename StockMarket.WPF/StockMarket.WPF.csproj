@@ -8,4 +8,8 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\StockMarket.FMPApi\StockMarket.FMPApi.csproj" />
+  </ItemGroup>
+
 </Project>
