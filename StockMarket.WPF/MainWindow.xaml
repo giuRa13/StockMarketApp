@@ -6,18 +6,28 @@
         xmlns:local="clr-namespace:StockMarket.WPF"
         xmlns:controls="clr-namespace:StockMarket.WPF.Controls"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800" Background="{StaticResource BrushBlack}">
-
+        Title="MainWindow" Height="450" Width="800" Background="{StaticResource BrushBlackFull}">
+    <WindowChrome.WindowChrome>
+        <WindowChrome  GlassFrameThickness="0" CaptionHeight="0"/>
+    </WindowChrome.WindowChrome>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        
-        <controls:NavigationBar Grid.Row="0" DataContext="{Binding Navigator}"/>
 
-        <ContentControl Grid.Row="1" Content="{Binding Navigator.CurrentViewModel}"/>
 
+
+        <Rectangle Fill="{StaticResource BrushBlackFull}" Height="14"  MouseLeftButtonDown="drag_action"/>
+
+        <controls:NavigationBar Grid.Row="1" DataContext="{Binding Navigator}"/>
+
+        <Border Grid.Row="2" BorderBrush="{StaticResource BrushBlackFull}" BorderThickness="4" CornerRadius="10" UseLayoutRounding="False">
+            <Grid Grid.Row="1" Background="{StaticResource BrushBlack}">
+                <ContentControl Grid.Row="1" Content="{Binding Navigator.CurrentViewModel}" Background="{StaticResource BrushBlack}"/>
+            </Grid>
+        </Border>
 
     </Grid>
 </Window>

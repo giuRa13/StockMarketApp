@@ -20,5 +20,17 @@ namespace StockMarket.WPF
         {
             InitializeComponent();
         }
+
+
+        private void drag_action(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            DragMove();
+        }
+
+        public MainWindow GetMainWindow() 
+        {
+            return this;
+        }
+
     }
 }

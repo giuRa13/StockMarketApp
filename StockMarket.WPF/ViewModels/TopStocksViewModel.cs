@@ -9,20 +9,58 @@ using StockMarket.FMPApi.Services;
 
 namespace StockMarket.WPF.ViewModels
 {
-    public class TopStocksViewModel
+    public class TopStocksViewModel : ViewModelBase
     {
         private readonly ITopStocksService _topStocksService;
-
-        public TopStock Apple {  get; set; }
-        public TopStock Nvidia { get; set; }
-        public TopStock Microsoft { get; set; }
-
-
         public TopStocksViewModel(ITopStocksService topStockService)
         {
             _topStocksService = topStockService;
         }
+        
 
+        private TopStock _apple;
+        public TopStock Apple
+        {
+            get { return _apple; }
+            set 
+            { 
+                _apple = value; 
+                OnPropertyChanged(nameof(Apple));
+            }
+        }
+
+        private TopStock _nvidia;
+        public TopStock Nvidia
+        {
+            get { return _nvidia; }
+            set
+            {
+                _nvidia = value;
+                OnPropertyChanged(nameof(Nvidia));
+            }
+        }
+
+        private TopStock _microsoft;
+        public TopStock Microsoft
+        {
+            get { return _microsoft; }
+            set
+            {
+                _microsoft = value;
+                OnPropertyChanged(nameof(Microsoft));
+            }
+        }
+
+        private TopStock _amazon;
+        public TopStock Amazon
+        {
+            get { return _amazon; }
+            set
+            {
+                _amazon = value;
+                OnPropertyChanged(nameof(Amazon));
+            }
+        }
 
         public static TopStocksViewModel LoadTopStocksViewModel(ITopStocksService topStocksService)
         {
@@ -30,6 +68,7 @@ namespace StockMarket.WPF.ViewModels
             topStocksViewModel.LoadTopStocks();
             return topStocksViewModel;
         }
+
 
         private void LoadTopStocks()
         {
@@ -52,6 +91,13 @@ namespace StockMarket.WPF.ViewModels
                 if (task.Exception == null)
                 {
                     Microsoft = task.Result;
+                }
+            });
+            _topStocksService.GetStockFull(TopStockName.AMZN).ContinueWith(task =>
+            {
+                if (task.Exception == null)
+                {
+                    Amazon = task.Result;
                 }
             });
         }

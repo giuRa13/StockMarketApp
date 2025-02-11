@@ -10,5 +10,6 @@ namespace StockMarket.Domain.Services
     public interface ITopStocksService
     {
         Task<TopStock> GetStockFull(TopStockName ticker);
+
     }
 }

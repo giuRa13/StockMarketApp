@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using StockMarket.WPF;
 
 namespace StockMarket.WPF.Controls
 {
@@ -23,6 +24,27 @@ namespace StockMarket.WPF.Controls
         public NavigationBar()
         {
             InitializeComponent();
+        }
+
+
+        private void btn_minimize_Click(object sender, RoutedEventArgs e)
+        {
+            App.Current.MainWindow.WindowState = WindowState.Minimized;
+            
+        }
+
+        private void btn_maximize_Click(object sender, RoutedEventArgs e)
+        {
+            if (App.Current.MainWindow.WindowState == WindowState.Maximized)
+                App.Current.MainWindow.WindowState = WindowState.Normal;
+            else
+                App.Current.MainWindow.WindowState = WindowState.Maximized;
+
+        }
+
+        private void btn_close_Click(object sender, RoutedEventArgs e)
+        {
+            App.Current.MainWindow.Close();
         }
     }
 }

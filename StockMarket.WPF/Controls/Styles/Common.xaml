@@ -14,5 +14,7 @@
     <SolidColorBrush x:Key="BrushYellow2" Color="{StaticResource Yellow2}"/>
     <SolidColorBrush x:Key="BrushGray" Color="{StaticResource Gray}"/>
     <SolidColorBrush x:Key="BrushWhite" Color="{StaticResource White}"/>
+
+    <!--Button-->
     
 </ResourceDictionary>

@@ -39,8 +39,6 @@ namespace StockMarket.FMPApi.Services
             }
         }
 
-
-
         public string GetUriSuffix(TopStockName ticker) 
         {
             switch (ticker)
@@ -51,6 +49,8 @@ namespace StockMarket.FMPApi.Services
                     return "NVDA";
                 case TopStockName.MSFT:
                     return "MSFT";
+                case TopStockName.AMZN:
+                    return "AMZN";
                 default:
                     return "AAPL";
             }

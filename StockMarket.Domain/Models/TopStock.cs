@@ -10,7 +10,8 @@ namespace StockMarket.Domain.Models
     {
         AAPL,
         NVDA,
-        MSFT
+        MSFT,
+        AMZN
     }
 
     public class TopStock
@@ -51,7 +52,8 @@ namespace StockMarket.Domain.Models
         public bool isActivelyTrading { get; set; }
         public bool isAdr { get; set; }
         public bool isFund { get; set; }
-
-
     }
+
+   
+
 }

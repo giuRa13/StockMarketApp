@@ -4,19 +4,42 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:StockMarket.WPF.Controls"
+             
              xmlns:nav="clr-namespace:StockMarket.WPF.States.Navigators"
+             xmlns:vm="clr-namespace:StockMarket.WPF.ViewModels"
+             xmlns:converters="clr-namespace:StockMarket.WPF.Converters"
+             
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <converters:EqualToParameterConverter x:Key="EqualToParameterConverter"/>
+    </UserControl.Resources>
+    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Grid.Row="0" Text="Stock Market App" Background="{StaticResource BrushBlack}" Foreground="{StaticResource BrushYellow1}" Padding="10,10,10,10" FontWeight="Bold" FontSize="16" />
-        <Separator Grid.Row="0" VerticalAlignment="Bottom" Background="{StaticResource BrushBlackFull}" Margin="0"/>
+        <Border Grid.Row="0" BorderBrush="{StaticResource BrushBlackFull}" BorderThickness="4" CornerRadius="10" UseLayoutRounding="False">
+            <Grid Background="{StaticResource BrushBlack}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="88*"/>
+                    <ColumnDefinition Width="4*"/>
+                    <ColumnDefinition Width="4*"/>
+                    <ColumnDefinition Width="4*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="Stock Market App" Background="{StaticResource BrushBlack}" Foreground="{StaticResource BrushYellow1}" Padding="12" FontWeight="Bold" FontSize="18" />
+                <Button Grid.Column="1" x:Name="btn_minimize" Content="__" Margin="2,2,2,18" Click="btn_minimize_Click" Style="{StaticResource AppButton}" FontSize="14" FontWeight="Bold"/>
+                <Button Grid.Column="2" x:Name="btn_maximize" Content="🗖" Margin="2,2,2,18" Click="btn_maximize_Click" Style="{StaticResource AppButton}" FontSize="14" FontWeight="Bold"/>
+                <Button Grid.Column="3" x:Name="btn_close" Content="✖" Margin="2,2,2,18" Click="btn_close_Click" Style="{StaticResource AppButtonClose}" FontSize="12" FontWeight="Bold"/>
+            </Grid>
+        </Border>
 
-        <Grid Grid.Row="1" Background="{StaticResource BrushBlack}">
+        <Grid Grid.Row="1" Background="{StaticResource BrushBlackFull}">
+            <Grid.Resources>
+                <Style TargetType="RadioButton" BasedOn="{StaticResource NavButton}"/>
+            </Grid.Resources>
             <Grid.ColumnDefinitions >
                 <ColumnDefinition Width="auto"/>
                 <ColumnDefinition Width="auto"/>
@@ -25,12 +48,17 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <RadioButton Grid.Column="0" Content="Home" Command="{Binding UpdateCurrentViewModelCommand}" CommandParameter="{x:Static nav:ViewType.Home}" Foreground="{StaticResource BrushYellow1}" Padding="7" VerticalContentAlignment="Center"  BorderThickness="0"/>
-            <RadioButton Grid.Column="1" Content="Portfolio" Command="{Binding UpdateCurrentViewModelCommand}" CommandParameter="{x:Static nav:ViewType.Portfolio}" Foreground="{StaticResource BrushYellow1}" Padding="7" VerticalContentAlignment="Center"  BorderThickness="0"/>
-            <RadioButton Grid.Column="2" Content="Buy" Foreground="{StaticResource BrushYellow1}" Padding="7" VerticalContentAlignment="Center"  BorderThickness="0" />
-            <RadioButton Grid.Column="3" Content="Sell" Foreground="{StaticResource BrushYellow1}" Padding="7" VerticalContentAlignment="Center" BorderThickness="0" />
+            <RadioButton Margin="2,0,0,0" Grid.Column="0" Content="Home"  VerticalContentAlignment="Center" 
+                         Command="{Binding UpdateCurrentViewModelCommand}" CommandParameter="{x:Static nav:ViewType.Home}"
+                         IsChecked="{Binding CurrentViewModel, Mode=OneWay, Converter={StaticResource EqualToParameterConverter}, ConverterParameter={x:Type vm:HomeViewModel}}"/>
+            <RadioButton Grid.Column="1" Content="Portfolio" VerticalContentAlignment="Center" 
+                         Command="{Binding UpdateCurrentViewModelCommand}" CommandParameter="{x:Static nav:ViewType.Portfolio}"
+                         IsChecked="{Binding CurrentViewModel, Mode=OneWay, Converter={StaticResource EqualToParameterConverter}, ConverterParameter={x:Type vm:PortfolioViewModel}}"/>
+            <RadioButton Grid.Column="2" Content="Buy"  VerticalContentAlignment="Center"/>
+            <RadioButton Grid.Column="3" Content="Sell"  VerticalContentAlignment="Center"/>
+            <RadioButton Margin="0,0,2,0" Grid.Column="4" IsEnabled="False" VerticalContentAlignment="Center"/>
         </Grid>
-        <Separator Grid.Row="1" VerticalAlignment="Bottom" Background="{StaticResource BrushBlackFull}" Margin="0" MinHeight="5" />
+
     </Grid>
     
 </UserControl>
