@@ -13,6 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\StockMarket.EntityFramework\StockMarket.EntityFramework.csproj" />
     <ProjectReference Include="..\StockMarket.FMPApi\StockMarket.FMPApi.csproj" />
   </ItemGroup>
 
