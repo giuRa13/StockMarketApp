@@ -6,7 +6,11 @@
              xmlns:local="clr-namespace:StockMarket.WPF.Views"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+
     <Grid>
-        <TextBlock Text="Portfolio" Foreground="{StaticResource BrushGray}"/>
+
+        <TextBlock Grid.Column="1" Text="Portfolio" Foreground="{StaticResource BrushGray}"/>
+
     </Grid>
+    
 </UserControl>

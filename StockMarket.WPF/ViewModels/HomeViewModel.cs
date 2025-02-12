@@ -16,6 +16,5 @@ namespace StockMarket.WPF.ViewModels
             this.TopStocksViewModel = topStocksViewModel;
         }
 
-        
     }
 }

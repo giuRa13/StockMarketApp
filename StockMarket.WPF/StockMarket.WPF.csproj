@@ -9,6 +9,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="ScottPlot.WPF" Version="5.0.54" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\StockMarket.FMPApi\StockMarket.FMPApi.csproj" />
   </ItemGroup>
 

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace StockMarket.Domain.Models
 {
-    public class Stock
+    public class Asset
     {
         public string Symbol { get; set; }
         public double PricePerShare {  get; set; }

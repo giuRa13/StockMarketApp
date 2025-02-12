@@ -20,7 +20,7 @@ namespace StockMarket.EntityFramework
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<AssetTransaction>().OwnsOne(a => a.Stock); //Stock embedded in AssetTransactions table
+            modelBuilder.Entity<AssetTransaction>().OwnsOne(a => a.Asset); //Stock embedded in AssetTransactions table
 
             base.OnModelCreating(modelBuilder);
         }

@@ -11,9 +11,9 @@ namespace StockMarket.WPF.States.Navigators
     public enum ViewType
     {
         Home,
-        Portfolio
+        Portfolio,
+        Chart
     }
-
 
     public interface INavigator
     {

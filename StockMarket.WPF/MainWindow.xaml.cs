@@ -32,5 +32,6 @@ namespace StockMarket.WPF
             return this;
         }
 
+        
     }
 }

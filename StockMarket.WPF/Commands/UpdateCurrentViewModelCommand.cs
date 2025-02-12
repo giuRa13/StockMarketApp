@@ -40,6 +40,9 @@ namespace StockMarket.WPF.Commands
                     case ViewType.Portfolio:
                         _navigator.CurrentViewModel = new PortfolioViewModel();
                         break;
+                    case ViewType.Chart:
+                        _navigator.CurrentViewModel = new ChartViewModel();
+                        break;
                     default:
                         break;
                 }

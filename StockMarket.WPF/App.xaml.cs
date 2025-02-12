@@ -17,6 +17,14 @@ namespace StockMarket.WPF
             {
                 var stocks = task.Result;
             });*/
+            /*new StockPriceService().GetPrice("TSLA").ContinueWith((task) =>
+            {
+                var price = task.Result;
+            });*/
+            /*new StockPriceService().GetHistorical("TSLA", "2025-01-30").ContinueWith((task) =>
+            {
+                var price = task.Result;
+            });*/
 
             Window window = new MainWindow();
             window.DataContext = new MainViewModel();

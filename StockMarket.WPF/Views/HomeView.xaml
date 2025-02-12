@@ -12,6 +12,7 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
+        
         <TextBlock Text="Home" Foreground="{StaticResource BrushGray}"/>
 
        <!--<controls:StockCard Grid.Row="1" Margin="0,10" HorizontalAlignment="Left" DataContext="{Binding TopStocksViewModel.Nvidia}"/>-->

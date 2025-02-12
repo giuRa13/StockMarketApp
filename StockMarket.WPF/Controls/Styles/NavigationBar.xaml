@@ -47,11 +47,17 @@
             <Setter.Value>
                 <ControlTemplate TargetType="RadioButton">
                     <Border BorderBrush="{StaticResource BrushBlackFull}" BorderThickness="2,1" CornerRadius="10" UseLayoutRounding="False">
-                    <Grid Background="{TemplateBinding Background}" UseLayoutRounding="False">
-                            <TextBlock Text="{TemplateBinding Content}" Padding="{TemplateBinding Padding}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" FontSize="{TemplateBinding FontSize}"
+                    <Grid x:Name="gridMain" Background="{TemplateBinding Background}" UseLayoutRounding="False">
+                            <TextBlock x:Name="textBlock" Text="{TemplateBinding Content}" Padding="{TemplateBinding Padding}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" FontSize="{TemplateBinding FontSize}"
                                 />
                         </Grid>
                     </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter Property="Background" Value="{StaticResource BrushYellow1}" TargetName="gridMain"/>
+                            <Setter Property="Foreground" Value="{StaticResource BrushBlackFull}" TargetName="textBlock"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>

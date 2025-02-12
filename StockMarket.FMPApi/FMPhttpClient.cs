@@ -24,5 +24,13 @@ namespace StockMarket.WPF
             return JsonConvert.DeserializeObject<T>(jsonResponse);
         }
 
+        public async Task<T> GetAsyncB<T>(string uri)
+        {
+            HttpResponseMessage response = await GetAsync($"{uri}/&apikey=vTzirAVlYuLErLtb6lcjwcW3cybPTTBk");
+            string jsonResponse = await response.Content.ReadAsStringAsync();
+
+            return JsonConvert.DeserializeObject<T>(jsonResponse);
+        }
+
     }
 }

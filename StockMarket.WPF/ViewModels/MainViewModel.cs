@@ -13,7 +13,8 @@ namespace StockMarket.WPF.ViewModels
 
         public MainViewModel()
         {
-            Navigator.UpdateCurrentViewModelCommand.Execute(ViewType.Home);
+            //Navigator.UpdateCurrentViewModelCommand.Execute(ViewType.Home);
+            Navigator.UpdateCurrentViewModelCommand.Execute(ViewType.Chart);
         }
 
     }

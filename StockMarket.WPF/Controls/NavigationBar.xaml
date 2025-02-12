@@ -54,7 +54,9 @@
             <RadioButton Grid.Column="1" Content="Portfolio" VerticalContentAlignment="Center" 
                          Command="{Binding UpdateCurrentViewModelCommand}" CommandParameter="{x:Static nav:ViewType.Portfolio}"
                          IsChecked="{Binding CurrentViewModel, Mode=OneWay, Converter={StaticResource EqualToParameterConverter}, ConverterParameter={x:Type vm:PortfolioViewModel}}"/>
-            <RadioButton Grid.Column="2" Content="Buy"  VerticalContentAlignment="Center"/>
+            <RadioButton Grid.Column="2" Content="Buy"  VerticalContentAlignment="Center"
+                         Command="{Binding UpdateCurrentViewModelCommand}" CommandParameter="{x:Static nav:ViewType.Chart}"
+                         IsChecked="{Binding CurrentViewModel, Mode=OneWay, Converter={StaticResource EqualToParameterConverter}, ConverterParameter={x:Type vm:ChartViewModel}}"/>
             <RadioButton Grid.Column="3" Content="Sell"  VerticalContentAlignment="Center"/>
             <RadioButton Margin="0,0,2,0" Grid.Column="4" IsEnabled="False" VerticalContentAlignment="Center"/>
         </Grid>

@@ -17,8 +17,6 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-
-
         <Rectangle Fill="{StaticResource BrushBlackFull}" Height="14"  MouseLeftButtonDown="drag_action"/>
 
         <controls:NavigationBar Grid.Row="1" DataContext="{Binding Navigator}"/>
