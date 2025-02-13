@@ -12,6 +12,7 @@ namespace StockMarket.Domain.Services
         Task<TopStock> GetStock(string symbol);
 
         Task<double> GetPrice(string symbol);
+
         Task<ChartData> GetHistorical(string symbol, string date);
     }
 }

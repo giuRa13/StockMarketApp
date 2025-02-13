@@ -52,7 +52,7 @@ namespace StockMarket.FMPApi.Services
                 case TopStockName.AMZN:
                     return "AMZN";
                 default:
-                    return "AAPL";
+                    throw new Exception("TopStockName does not have a suffix defined.");
             }
         }
 

@@ -1,15 +1,18 @@
 ﻿using Newtonsoft.Json;
 using ScottPlot;
+using ScottPlot.Plottables;
 using ScottPlot.WPF;
 using StockMarket.Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using Colors = ScottPlot.Colors;
 
 namespace StockMarket.WPF.Views
@@ -19,10 +22,18 @@ namespace StockMarket.WPF.Views
     /// </summary>
     public partial class ChartView : UserControl
     {
+       
         //string date = "2024-01-01";
         string date = "";
         string ticker = "TSLA";
         List<OHLC> prices = new();
+
+        double[] ema = { };
+        DateTime[] ys = { };
+        List<DateTime> listTime = new List<DateTime>();
+        List<double> listEma = new List<double>();
+
+
 
         public ChartView()
         {
@@ -58,24 +69,28 @@ namespace StockMarket.WPF.Views
                 ChartData stock = JsonConvert.DeserializeObject<ChartData>(jsonResponse);
                 foreach (var result in stock.historical)
                 {
-                    //Console.WriteLine(result.date + " - " + result.changePercent);
-
                     double open = result.open;
                     double close = result.close;
                     double high = result.high;
                     double low = result.low;
+                    double adjClose = result.adjClose;
 
                     DateTime dt = DateTime.Parse(result.date);
                     TimeSpan timeSpan = TimeSpan.FromDays(1);
 
                     prices.Add(new OHLC(open, high, low, close, dt, timeSpan));
 
+                    /*listEma.Add(adjClose);
+                    ema = listEma.ToArray();
+                    listTime.Add(dt);
+                    ys = listTime.ToArray();*/
                 }
+
 
                 //WpfPlot1.Plot.Add.Candlestick(prices);
                 var candlePlot = WpfPlot1.Plot.Add.Candlestick(prices);
                 candlePlot.RisingColor = ScottPlot.Color.FromHtml("#00FF00");
-                candlePlot.FallingColor = ScottPlot.Color.FromHtml("#FF0000"); 
+                candlePlot.FallingColor = ScottPlot.Color.FromHtml("#FF0000");
 
                 WpfPlot1.Plot.Axes.DateTimeTicksBottom();
                 WpfPlot1.Plot.FigureBackground.Color = new("#1c1c1e");
@@ -97,9 +112,9 @@ namespace StockMarket.WPF.Views
                 WpfPlot1.Plot.Grid.YAxisStyle.MajorLineStyle.Color = ScottPlot.Colors.White.WithAlpha(15);
                 WpfPlot1.Plot.Grid.XAxisStyle.MinorLineStyle.Color = ScottPlot.Colors.White.WithAlpha(5);
                 WpfPlot1.Plot.Grid.YAxisStyle.MinorLineStyle.Color = ScottPlot.Colors.White.WithAlpha(5);
-                
 
-                //WpfPlot1.Plot.ShowLegend();
+                //double[] ema50 = EMA(ema, 50);
+                //WpfPlot1.Plot.Add.ScatterLine(ys, ema50);
 
                 WpfPlot1.Refresh();
 
@@ -108,7 +123,24 @@ namespace StockMarket.WPF.Views
             {
                 Console.WriteLine(ex.Message);
             }
+        }
 
+        public double[] EMA(double[] x, int N)
+        {
+            // x is the input series            
+            // N is the notional age of the data used
+            // k is the smoothing constant
+
+            double k = 2.0 / (N + 1);
+            double[] y = new double[x.Length];
+            y[0] = x[0];
+
+            for (int i = 1; i < x.Length; i++)
+                y[i] = (x[i] * k) + (y[i - 1] * (1 - k));
+            //y[i] = k * x[i] + (1 - k) * y[i - 1];
+            //Closing price x multiplier + EMA (previous day) x (1-multiplier)
+            
+            return y;
         }
 
     }

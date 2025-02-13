@@ -1,6 +1,7 @@
 ﻿using StockMarket.FMPApi.Services;
 using StockMarket.WPF.States.Navigators;
 using StockMarket.WPF.ViewModels;
+using StockMarket.WPF.ViewModels.Factories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,11 +15,13 @@ namespace StockMarket.WPF.Commands
     {
         public event EventHandler CanExecuteChanged;
 
-        private INavigator _navigator;
+        private readonly INavigator _navigator;
+        private readonly IViewModelAbstractFactory _viewModelAbstractFactory;
 
-        public UpdateCurrentViewModelCommand(INavigator navigator)
+        public UpdateCurrentViewModelCommand(INavigator navigator, IViewModelAbstractFactory viewModelAbstractFactory)
         {
             _navigator = navigator;
+            _viewModelAbstractFactory = viewModelAbstractFactory;
         }
 
 
@@ -32,21 +35,12 @@ namespace StockMarket.WPF.Commands
             if (parameter is ViewType)
             {
                 ViewType viewType = (ViewType)parameter;
-                switch (viewType)
-                {
-                    case ViewType.Home:
-                        _navigator.CurrentViewModel = new HomeViewModel(TopStocksViewModel.LoadTopStocksViewModel(new TopStocksService()));
-                        break;
-                    case ViewType.Portfolio:
-                        _navigator.CurrentViewModel = new PortfolioViewModel();
-                        break;
-                    case ViewType.Chart:
-                        _navigator.CurrentViewModel = new ChartViewModel();
-                        break;
-                    default:
-                        break;
-                }
+          
+                _navigator.CurrentViewModel = _viewModelAbstractFactory.CreateViewModel(viewType);
             }
         }
+
+
     }
+
 }
