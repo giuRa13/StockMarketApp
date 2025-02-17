@@ -8,21 +8,25 @@ using System.Threading.Tasks;
 
 namespace StockMarket.WPF.ViewModels.Factories
 {
-    public class ViewModelAbstractFactory : IViewModelAbstractFactory
+    public class RootViewModelFactory : IRootViewModelFactory
     {
         private IViewModelFactory<HomeViewModel> _homeViewModelFactory;
         private IViewModelFactory<PortfolioViewModel> _portfolioViewModelFactory;
         private IViewModelFactory<ChartViewModel> _chartViewModelFactory;
+        private readonly BuyViewModel _buyViewModel; // retains the state (no deps injection)
 
-        public ViewModelAbstractFactory(
+        public RootViewModelFactory(
             IViewModelFactory<HomeViewModel> hommeViewModelFactory, 
             IViewModelFactory<PortfolioViewModel> portfolioViewModelFactory,
-            IViewModelFactory<ChartViewModel> chartViewModelFactory ) 
+            IViewModelFactory<ChartViewModel> chartViewModelFactory,
+            BuyViewModel buyViewModel) 
         {
             _homeViewModelFactory = hommeViewModelFactory;
             _portfolioViewModelFactory = portfolioViewModelFactory;
             _chartViewModelFactory = chartViewModelFactory;
+            _buyViewModel = buyViewModel;
         }
+
         
         public ViewModelBase CreateViewModel(ViewType viewType)
         {
@@ -30,13 +34,12 @@ namespace StockMarket.WPF.ViewModels.Factories
             {
                 case ViewType.Home:
                     return _homeViewModelFactory.CreateViewModel();
-                    break;
                 case ViewType.Portfolio:
                     return _portfolioViewModelFactory.CreateViewModel();
-                    break;
                 case ViewType.Chart:
                     return _chartViewModelFactory.CreateViewModel();
-                    break;
+                case ViewType.Buy:
+                    return _buyViewModel;
                 default:
                     throw new ArgumentException("ViewType has not a ViewModel", "viewType");
             }

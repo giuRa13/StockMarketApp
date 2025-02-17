@@ -52,11 +52,12 @@ namespace StockMarket.WPF
             services.AddSingleton<IBuyStockService, BuyStockService>();
             services.AddSingleton<ITopStocksService, TopStocksService>();
 
-            services.AddSingleton<IViewModelAbstractFactory, ViewModelAbstractFactory>();
+            services.AddSingleton<IRootViewModelFactory, RootViewModelFactory>();
             services.AddSingleton<IViewModelFactory<HomeViewModel>, HomeViewModelFactory>();
             services.AddSingleton<IViewModelFactory<TopStocksViewModel>, TopStocksViewModelFactory>();
             services.AddSingleton<IViewModelFactory<PortfolioViewModel>, PortfolioViewModelFactory>();
             services.AddSingleton<IViewModelFactory<ChartViewModel>, ChartViewModelFactory>();
+            services.AddScoped<BuyViewModel>(); // retains the state (no deps injection)
 
             services.AddScoped<INavigator, Navigator>();
             services.AddScoped<MainViewModel>();

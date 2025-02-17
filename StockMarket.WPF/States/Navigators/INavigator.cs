@@ -12,7 +12,8 @@ namespace StockMarket.WPF.States.Navigators
     {
         Home,
         Portfolio,
-        Chart
+        Chart,
+        Buy
     }
 
     public interface INavigator

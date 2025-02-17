@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using StockMarket.WPF.Controls;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -21,6 +22,8 @@ namespace StockMarket.WPF
             InitializeComponent();
 
             DataContext = dataContext;
+
+            
         }
 
 
@@ -34,6 +37,13 @@ namespace StockMarket.WPF
             return this;
         }
 
-        
+        private void UIElement_OnMouseWheel(object sender, MouseWheelEventArgs e)
+        {
+            e.Handled = true;
+            //handler your zoomIn/Out here
+        }
+    
+
+
     }
 }

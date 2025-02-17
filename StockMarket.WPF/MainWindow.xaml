@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:StockMarket.WPF"
         xmlns:controls="clr-namespace:StockMarket.WPF.Controls"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800" Background="{StaticResource BrushBlackFull}">
+        Title="MainWindow" Height="450" Width="800" Background="{StaticResource BrushBlackFull}" >
     <WindowChrome.WindowChrome>
         <WindowChrome  GlassFrameThickness="0" CaptionHeight="0"/>
     </WindowChrome.WindowChrome>
@@ -23,7 +23,9 @@
 
         <Border Grid.Row="2" BorderBrush="{StaticResource BrushBlackFull}" BorderThickness="4" CornerRadius="10" UseLayoutRounding="False">
             <Grid Grid.Row="1" Background="{StaticResource BrushBlack}">
-                <ContentControl Grid.Row="1" Content="{Binding Navigator.CurrentViewModel}" Background="{StaticResource BrushBlack}"/>
+                <ScrollViewer VerticalScrollBarVisibility="Auto" >
+                    <ContentControl Grid.Row="1" Content="{Binding Navigator.CurrentViewModel}" Background="{StaticResource BrushBlack}" />
+                </ScrollViewer>
             </Grid>
         </Border>
 

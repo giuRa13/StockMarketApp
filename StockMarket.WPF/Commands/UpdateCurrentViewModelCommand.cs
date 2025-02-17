@@ -16,9 +16,9 @@ namespace StockMarket.WPF.Commands
         public event EventHandler CanExecuteChanged;
 
         private readonly INavigator _navigator;
-        private readonly IViewModelAbstractFactory _viewModelAbstractFactory;
+        private readonly IRootViewModelFactory _viewModelAbstractFactory;
 
-        public UpdateCurrentViewModelCommand(INavigator navigator, IViewModelAbstractFactory viewModelAbstractFactory)
+        public UpdateCurrentViewModelCommand(INavigator navigator, IRootViewModelFactory viewModelAbstractFactory)
         {
             _navigator = navigator;
             _viewModelAbstractFactory = viewModelAbstractFactory;

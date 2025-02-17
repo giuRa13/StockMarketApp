@@ -39,20 +39,6 @@ namespace StockMarket.WPF.Views
         {
             InitializeComponent();
 
-            /*int value = 50;
-            var prices = Generate.RandomOHLCs(value);
-            WpfPlot1.Plot.Add.Candlestick(prices);
-            WpfPlot1.Plot.Axes.DateTimeTicksBottom();
-
-            WpfPlot1.Plot.FigureBackground.Color = new("#1c1c1e");
-            WpfPlot1.Plot.Axes.Color(new("#888888"));
-
-            WpfPlot1.Plot.Grid.XAxisStyle.MajorLineStyle.Color = ScottPlot.Colors.White.WithAlpha(15);
-            WpfPlot1.Plot.Grid.YAxisStyle.MajorLineStyle.Color = ScottPlot.Colors.White.WithAlpha(15);
-            WpfPlot1.Plot.Grid.XAxisStyle.MinorLineStyle.Color = ScottPlot.Colors.White.WithAlpha(5);
-            WpfPlot1.Plot.Grid.YAxisStyle.MinorLineStyle.Color = ScottPlot.Colors.White.WithAlpha(5);
-            WpfPlot1.Refresh();*/
-
             DrawGraph();
         }
 

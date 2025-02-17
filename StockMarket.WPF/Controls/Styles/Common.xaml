@@ -16,5 +16,152 @@
     <SolidColorBrush x:Key="BrushWhite" Color="{StaticResource White}"/>
 
     <!--Button-->
+    <Style  TargetType="Button">
+        <Setter Property="Background" Value="{StaticResource BrushBlack}"/>
+        <Setter Property="Foreground" Value="{StaticResource BrushYellow1}"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border BorderThickness="2" BorderBrush="{StaticResource BrushBlackFull}" CornerRadius="3" Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}" Margin="{TemplateBinding Margin}" >
+                        <ContentPresenter/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="{StaticResource BrushBlackFull}"/>
+                <Setter Property="FontWeight" Value="Bold"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+
+    <!--Text Box-->
+    <Style  x:Key="TextBox" TargetType="TextBox">
+        <Setter Property="SelectionBrush" Value="{StaticResource BrushYellow1}"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="TextBox">
+                    <Border x:Name="bg" BorderThickness="1" BorderBrush="{StaticResource BrushBlackFull}" CornerRadius="3" Background="{StaticResource BrushGray}">
+                        <ScrollViewer x:Name="PART_ContentHost"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="BorderBrush" TargetName="bg" Value="{StaticResource  BrushYellow2}"/>
+                            <Setter Property="BorderThickness" TargetName="bg" Value="2"/>
+                        </Trigger>
+                        <Trigger Property="IsFocused" Value="True">
+                            <Setter Property="BorderBrush" TargetName="bg" Value="{StaticResource  BrushYellow2}"/>
+                            <Setter Property="BorderThickness" TargetName="bg" Value="2"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
     
+    
+    <!--ScrollBar-->
+    <Style x:Key="ScrollThumbs" TargetType="{x:Type Thumb}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Thumb}">
+                    <Grid x:Name="Grid">
+                        <Rectangle
+                        Width="Auto"
+                        Height="Auto"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Stretch"
+                        Fill="Transparent" />
+                        <Border
+                        x:Name="ScrollBarRectangle"
+                        Width="Auto"
+                        Height="Auto"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Stretch"
+                        Background="{TemplateBinding Background}"
+                        CornerRadius="5" />
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="Tag" Value="Horizontal">
+                            <Setter TargetName="ScrollBarRectangle" Property="Width" Value="Auto" />
+                            <Setter TargetName="ScrollBarRectangle" Property="Height" Value="7" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <!-- #FF8C8C8C  -->
+    <Style TargetType="{x:Type ScrollBar}">
+        <Setter Property="Margin" Value="0,0,0,0" />
+        <Setter Property="Stylus.IsFlicksEnabled" Value="false" />
+        <Setter Property="Foreground" Value="{StaticResource BrushYellow1}"/>
+        <Setter Property="Background" Value="#222222"/>
+        <Setter Property="Width" Value="8" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ScrollBar}">
+                    <Grid
+                    x:Name="GridRoot"
+                    Width="8"
+                    Background="{TemplateBinding Background}">
+                        <Track
+                        x:Name="PART_Track"
+                        Focusable="false"
+                        IsDirectionReversed="true">
+                            <Track.Thumb>
+                                <Thumb
+                                x:Name="ScrollBarThumb"
+                                Background="{TemplateBinding Foreground}"
+                                Style="{StaticResource ScrollThumbs}" />
+                            </Track.Thumb>
+                            <Track.IncreaseRepeatButton>
+                                <RepeatButton
+                                x:Name="PageUp"
+                                Command="ScrollBar.PageDownCommand"
+                                Focusable="false"
+                                Opacity="0" />
+                            </Track.IncreaseRepeatButton>
+                            <Track.DecreaseRepeatButton>
+                                <RepeatButton
+                                x:Name="PageDown"
+                                Command="ScrollBar.PageUpCommand"
+                                Focusable="false"
+                                Opacity="0" />
+                            </Track.DecreaseRepeatButton>
+                        </Track>
+                    </Grid>
+
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter TargetName="ScrollBarThumb" Property="Visibility" Value="Collapsed" />
+                        </Trigger>
+                        <Trigger Property="Orientation" Value="Horizontal">
+                            <Setter TargetName="GridRoot" Property="LayoutTransform">
+                                <Setter.Value>
+                                    <RotateTransform Angle="-90" />
+                                </Setter.Value>
+                            </Setter>
+                            <Setter TargetName="PART_Track" Property="LayoutTransform">
+                                <Setter.Value>
+                                    <RotateTransform Angle="-90" />
+                                </Setter.Value>
+                            </Setter>
+                            <Setter Property="Width" Value="Auto" />
+                            <Setter Property="Height" Value="8" />
+                            <Setter TargetName="ScrollBarThumb" Property="Tag" Value="Horizontal" />
+                            <Setter TargetName="PageDown" Property="Command" Value="ScrollBar.PageLeftCommand" />
+                            <Setter TargetName="PageUp" Property="Command" Value="ScrollBar.PageRightCommand" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
 </ResourceDictionary>

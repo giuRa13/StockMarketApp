@@ -72,28 +72,28 @@ namespace StockMarket.WPF.ViewModels
 
         private void LoadTopStocks()
         {
-            _topStocksService.GetStockFull(TopStockName.AAPL).ContinueWith(task =>
+            _topStocksService.GetTopStockFull(TopStockName.AAPL).ContinueWith(task =>
             {
                 if (task.Exception == null) 
                 {
                     Apple = task.Result;
                 }
             });
-            _topStocksService.GetStockFull(TopStockName.NVDA).ContinueWith(task =>
+            _topStocksService.GetTopStockFull(TopStockName.NVDA).ContinueWith(task =>
             {
                 if (task.Exception == null)
                 {
                     Nvidia = task.Result;
                 }
             });
-            _topStocksService.GetStockFull(TopStockName.MSFT).ContinueWith(task =>
+            _topStocksService.GetTopStockFull(TopStockName.MSFT).ContinueWith(task =>
             {
                 if (task.Exception == null)
                 {
                     Microsoft = task.Result;
                 }
             });
-            _topStocksService.GetStockFull(TopStockName.AMZN).ContinueWith(task =>
+            _topStocksService.GetTopStockFull(TopStockName.AMZN).ContinueWith(task =>
             {
                 if (task.Exception == null)
                 {

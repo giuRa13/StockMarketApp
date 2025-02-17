@@ -31,7 +31,7 @@ namespace StockMarket.WPF.States.Navigators
         public ICommand UpdateCurrentViewModelCommand { get; set; }
 
 
-        public Navigator(IViewModelAbstractFactory viewModelFactory)
+        public Navigator(IRootViewModelFactory viewModelFactory)
         {
             UpdateCurrentViewModelCommand = new UpdateCurrentViewModelCommand(this, viewModelFactory);   
         }

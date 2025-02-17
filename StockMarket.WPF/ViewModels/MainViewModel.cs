@@ -16,7 +16,7 @@ namespace StockMarket.WPF.ViewModels
             Navigator = navigator;
 
             //Navigator.UpdateCurrentViewModelCommand.Execute(ViewType.Home);
-            Navigator.UpdateCurrentViewModelCommand.Execute(ViewType.Chart);
+            Navigator.UpdateCurrentViewModelCommand.Execute(ViewType.Buy);
         }
 
     }

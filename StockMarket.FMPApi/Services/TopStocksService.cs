@@ -16,7 +16,7 @@ namespace StockMarket.FMPApi.Services
     public class TopStocksService : ITopStocksService
     {
 
-        public async Task<TopStock> GetStockFull(TopStockName ticker)
+        public async Task<TopStock> GetTopStockFull(TopStockName ticker)
         {
             /*using (HttpClient client = new HttpClient())
             {
