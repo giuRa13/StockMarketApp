@@ -28,16 +28,6 @@ namespace StockMarket.WPF.States.Navigators
             } 
         }
         
-        public ICommand UpdateCurrentViewModelCommand { get; set; }
-
-
-        public Navigator(IRootViewModelFactory viewModelFactory)
-        {
-            UpdateCurrentViewModelCommand = new UpdateCurrentViewModelCommand(this, viewModelFactory);   
-        }
-        
-        
-        
         
         // Observabe obj
         /*public event PropertyChangedEventHandler PropertyChanged;

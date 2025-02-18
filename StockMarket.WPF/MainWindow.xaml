@@ -29,7 +29,7 @@
                     </Style.Triggers>
                 </Style>
             </Grid.Style>
-            <controls:NavigationBar Grid.Row="1" DataContext="{Binding Navigator}"/>
+            <controls:NavigationBar Grid.Row="1" />
         </Grid>
 
         <Border Grid.Row="2" BorderBrush="{StaticResource BrushBlackFull}" BorderThickness="4" CornerRadius="10" UseLayoutRounding="False">

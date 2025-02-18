@@ -51,16 +51,16 @@
 
             <RadioButton Margin="2,0,0,0" Grid.Column="0" Content="Home"  VerticalContentAlignment="Center" 
                          Command="{Binding UpdateCurrentViewModelCommand}" CommandParameter="{x:Static nav:ViewType.Home}"
-                         IsChecked="{Binding CurrentViewModel, Mode=OneWay, Converter={StaticResource EqualToParameterConverter}, ConverterParameter={x:Type vm:HomeViewModel}}"/>
+                         IsChecked="{Binding Navigator.CurrentViewModel, Mode=OneWay, Converter={StaticResource EqualToParameterConverter}, ConverterParameter={x:Type vm:HomeViewModel}}"/>
             <RadioButton Grid.Column="1" Content="Portfolio" VerticalContentAlignment="Center" 
                          Command="{Binding UpdateCurrentViewModelCommand}" CommandParameter="{x:Static nav:ViewType.Portfolio}"
-                         IsChecked="{Binding CurrentViewModel, Mode=OneWay, Converter={StaticResource EqualToParameterConverter}, ConverterParameter={x:Type vm:PortfolioViewModel}}"/>
+                         IsChecked="{Binding Navigator.CurrentViewModel, Mode=OneWay, Converter={StaticResource EqualToParameterConverter}, ConverterParameter={x:Type vm:PortfolioViewModel}}"/>
             <RadioButton Grid.Column="2" Content="Chart"  VerticalContentAlignment="Center"
                          Command="{Binding UpdateCurrentViewModelCommand}" CommandParameter="{x:Static nav:ViewType.Chart}"
-                         IsChecked="{Binding CurrentViewModel, Mode=OneWay, Converter={StaticResource EqualToParameterConverter}, ConverterParameter={x:Type vm:ChartViewModel}}"/>
+                         IsChecked="{Binding Navigator.CurrentViewModel, Mode=OneWay, Converter={StaticResource EqualToParameterConverter}, ConverterParameter={x:Type vm:ChartViewModel}}"/>
             <RadioButton Grid.Column="3" Content="Buy"  VerticalContentAlignment="Center"
                          Command="{Binding UpdateCurrentViewModelCommand}" CommandParameter="{x:Static nav:ViewType.Buy}"
-                         IsChecked="{Binding CurrentViewModel, Mode=OneWay, Converter={StaticResource EqualToParameterConverter}, ConverterParameter={x:Type vm:BuyViewModel}}"/>
+                         IsChecked="{Binding Navigator.CurrentViewModel, Mode=OneWay, Converter={StaticResource EqualToParameterConverter}, ConverterParameter={x:Type vm:BuyViewModel}}"/>
             <RadioButton Grid.Column="4" Content="Sell"  VerticalContentAlignment="Center"/>
             <RadioButton Margin="0,0,2,0" Grid.Column="5" IsEnabled="False" VerticalContentAlignment="Center"/>
         </Grid>

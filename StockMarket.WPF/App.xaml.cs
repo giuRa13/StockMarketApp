@@ -65,9 +65,12 @@ namespace StockMarket.WPF
             services.AddSingleton<IViewModelFactory<TopStocksViewModel>, TopStocksViewModelFactory>();
             services.AddSingleton<IViewModelFactory<PortfolioViewModel>, PortfolioViewModelFactory>();
             services.AddSingleton<IViewModelFactory<ChartViewModel>, ChartViewModelFactory>();
-            services.AddSingleton<IViewModelFactory<LoginViewModel>, LoginViewModelFactory>();
-            services.AddScoped<BuyViewModel>(); // retains the state (no deps injection)
+            services.AddSingleton<IViewModelFactory<LoginViewModel>>((services) =>
+                new LoginViewModelFactory(services.GetRequiredService<IAuthenticator>(),
+                new ViewModelFactoryRenavigator<HomeViewModel>(services.GetRequiredService<INavigator>(),
+                services.GetRequiredService<IViewModelFactory<HomeViewModel>>())));
 
+            services.AddScoped<BuyViewModel>(); // retains the state (no deps injection)
             services.AddScoped<INavigator, Navigator>();
             services.AddScoped<IAuthenticator, Authenticator>();
             services.AddScoped<MainViewModel>();

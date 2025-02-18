@@ -1,5 +1,6 @@
 ﻿using StockMarket.WPF.Commands;
 using StockMarket.WPF.States;
+using StockMarket.WPF.States.Navigators;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,9 +29,9 @@ namespace StockMarket.WPF.ViewModels
 
         public ICommand LoginCommand { get; }
 
-        public LoginViewModel(IAuthenticator authenticator)
+        public LoginViewModel(IAuthenticator authenticator, IRenavigator renavigator)
         {
-            LoginCommand = new LoginCommand(this, authenticator);
+            LoginCommand = new LoginCommand(this, authenticator, renavigator);
         }
 
     }

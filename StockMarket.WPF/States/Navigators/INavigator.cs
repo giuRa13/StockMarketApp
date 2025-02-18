@@ -21,6 +21,5 @@ namespace StockMarket.WPF.States.Navigators
     {
         ViewModelBase CurrentViewModel { get; set; }
 
-        ICommand UpdateCurrentViewModelCommand {  get; }
     }
 }

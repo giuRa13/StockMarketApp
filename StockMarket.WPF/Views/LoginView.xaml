@@ -25,7 +25,7 @@
     </Grid>
     
     <Border Grid.Row="1" HorizontalAlignment="Center" BorderBrush="{StaticResource BrushBlackFull}" BorderThickness="3" 
-            CornerRadius="10" Padding="40,40,40,0" Margin="0,20" VerticalAlignment="Center" Background="{StaticResource BrushBlack}">
+            CornerRadius="10" Padding="40,40,40,0" Margin="0,0,0,20" VerticalAlignment="Center" Background="{StaticResource BrushBlack}">
             <Border.Effect>
                 <DropShadowEffect BlurRadius="20" Color="{StaticResource Black}"/>
             </Border.Effect>

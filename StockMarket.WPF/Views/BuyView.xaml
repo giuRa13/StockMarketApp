@@ -53,12 +53,12 @@
                     </StackPanel>
                 </Border>
                 <Border BorderBrush="{StaticResource BrushBlackFull}" BorderThickness="0,2,2,2" Padding="5,10">
-                    <StackPanel >
-                        <WrapPanel>
+                    <StackPanel>
+                        <WrapPanel Margin="0,5">
                             <TextBlock Text="Shares to buy:" Width="90" Foreground="{StaticResource BrushGray}"/>
                             <TextBox Text="{Binding SharesToBuy, UpdateSourceTrigger=PropertyChanged}" Width="45" Style="{StaticResource TextBox}"  />
                         </WrapPanel>
-                        <WrapPanel>
+                        <WrapPanel Margin="0,5">
                             <TextBlock Text="Price per Share:" Width="90" Foreground="{StaticResource BrushGray}"/>
                             <TextBlock Text="{Binding Stock.price, StringFormat={}{0:c}}" Foreground="{StaticResource BrushGray}"/>
                         </WrapPanel>
