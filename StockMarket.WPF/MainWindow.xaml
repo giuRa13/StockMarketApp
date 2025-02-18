@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:StockMarket.WPF"
         xmlns:controls="clr-namespace:StockMarket.WPF.Controls"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800" Background="{StaticResource BrushBlackFull}" >
+        Title="MainWindow" Height="450" Width="800" Background="{StaticResource BrushBlackFull}"  >
     <WindowChrome.WindowChrome>
         <WindowChrome  GlassFrameThickness="0" CaptionHeight="0"/>
     </WindowChrome.WindowChrome>
@@ -19,11 +19,22 @@
 
         <Rectangle Fill="{StaticResource BrushBlackFull}" Height="14"  MouseLeftButtonDown="drag_action"/>
 
-        <controls:NavigationBar Grid.Row="1" DataContext="{Binding Navigator}"/>
+        <Grid Grid.Row="1">
+            <Grid.Style>
+                <Style TargetType="Grid">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Authenticator.IsLoggedIn}" Value="False">
+                            <Setter Property="Visibility" Value="Collapsed"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Grid.Style>
+            <controls:NavigationBar Grid.Row="1" DataContext="{Binding Navigator}"/>
+        </Grid>
 
         <Border Grid.Row="2" BorderBrush="{StaticResource BrushBlackFull}" BorderThickness="4" CornerRadius="10" UseLayoutRounding="False">
             <Grid Grid.Row="1" Background="{StaticResource BrushBlack}">
-                <ScrollViewer VerticalScrollBarVisibility="Auto" >
+                <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
                     <ContentControl Grid.Row="1" Content="{Binding Navigator.CurrentViewModel}" Background="{StaticResource BrushBlack}" />
                 </ScrollViewer>
             </Grid>

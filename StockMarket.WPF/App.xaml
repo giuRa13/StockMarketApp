@@ -27,7 +27,10 @@
             <DataTemplate DataType="{x:Type viewmodels:ChartViewModel}">
                 <views:ChartView/>
             </DataTemplate>
-            
+
+            <DataTemplate DataType="{x:Type viewmodels:LoginViewModel}">
+                <views:LoginView LoginCommand="{Binding LoginCommand}"/>
+            </DataTemplate>
         </ResourceDictionary>
         
     </Application.Resources>

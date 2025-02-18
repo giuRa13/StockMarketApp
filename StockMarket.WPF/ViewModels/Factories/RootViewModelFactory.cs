@@ -14,24 +14,29 @@ namespace StockMarket.WPF.ViewModels.Factories
         private IViewModelFactory<PortfolioViewModel> _portfolioViewModelFactory;
         private IViewModelFactory<ChartViewModel> _chartViewModelFactory;
         private readonly BuyViewModel _buyViewModel; // retains the state (no deps injection)
+        private IViewModelFactory<LoginViewModel> _loginViewModelFactory;   
 
         public RootViewModelFactory(
-            IViewModelFactory<HomeViewModel> hommeViewModelFactory, 
+            IViewModelFactory<HomeViewModel> hommeViewModelFactory,
             IViewModelFactory<PortfolioViewModel> portfolioViewModelFactory,
             IViewModelFactory<ChartViewModel> chartViewModelFactory,
-            BuyViewModel buyViewModel) 
+            IViewModelFactory<LoginViewModel> loginViewModelFactory,
+            BuyViewModel buyViewModel)
         {
             _homeViewModelFactory = hommeViewModelFactory;
             _portfolioViewModelFactory = portfolioViewModelFactory;
             _chartViewModelFactory = chartViewModelFactory;
             _buyViewModel = buyViewModel;
+            _loginViewModelFactory = loginViewModelFactory;
         }
 
-        
+
         public ViewModelBase CreateViewModel(ViewType viewType)
         {
             switch (viewType)
             {
+                case ViewType.Login:
+                    return _loginViewModelFactory.CreateViewModel();
                 case ViewType.Home:
                     return _homeViewModelFactory.CreateViewModel();
                 case ViewType.Portfolio:
@@ -39,7 +44,7 @@ namespace StockMarket.WPF.ViewModels.Factories
                 case ViewType.Chart:
                     return _chartViewModelFactory.CreateViewModel();
                 case ViewType.Buy:
-                    return _buyViewModel;
+                    return _buyViewModel;           
                 default:
                     throw new ArgumentException("ViewType has not a ViewModel", "viewType");
             }

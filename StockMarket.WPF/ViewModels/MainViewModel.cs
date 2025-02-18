@@ -1,4 +1,5 @@
-﻿using StockMarket.WPF.States.Navigators;
+﻿using StockMarket.WPF.States;
+using StockMarket.WPF.States.Navigators;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,13 +11,14 @@ namespace StockMarket.WPF.ViewModels
     public class MainViewModel : ViewModelBase
     {
         public INavigator Navigator { get; set; }
+        public IAuthenticator Authenticator { get; }
 
-        public MainViewModel(INavigator navigator)
+        public MainViewModel(INavigator navigator, IAuthenticator authenticator)
         {
             Navigator = navigator;
+            Authenticator = authenticator;
 
-            //Navigator.UpdateCurrentViewModelCommand.Execute(ViewType.Home);
-            Navigator.UpdateCurrentViewModelCommand.Execute(ViewType.Buy);
+            Navigator.UpdateCurrentViewModelCommand.Execute(ViewType.Login);
         }
 
     }

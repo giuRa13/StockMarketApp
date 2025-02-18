@@ -13,7 +13,8 @@ namespace StockMarket.WPF.States.Navigators
         Home,
         Portfolio,
         Chart,
-        Buy
+        Buy,
+        Login
     }
 
     public interface INavigator

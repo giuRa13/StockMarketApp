@@ -15,6 +15,7 @@ using StockMarket.WPF.ViewModels.Factories;
 using StockMarket.WPF;
 using StockMarket.Domain.Services.Authentication;
 using Microsoft.AspNet.Identity;
+using StockMarket.WPF.States;
 
 
 namespace StockMarket.WPF
@@ -26,13 +27,13 @@ namespace StockMarket.WPF
         {           
             IServiceProvider serviceProvider = CreateServiceProvider();
 
-            IAuthenticationService authentication = serviceProvider.GetService<IAuthenticationService>();
-            authentication.Login("User1", "test1234");
+            //IAuthenticationService authentication = serviceProvider.GetService<IAuthenticationService>();
+            //authentication.Login("User1", "test1234");
 
             //Window window = new MainWindow();
             //window.DataContext = new MainViewModel();
             Window window = serviceProvider.GetRequiredService<MainWindow>();
-            window.DataContext = serviceProvider.GetRequiredService<MainViewModel>();
+            //window.DataContext = serviceProvider.GetRequiredService<MainViewModel>();
             window.Show();
 
             // Different Instance of a Scope:
@@ -64,9 +65,11 @@ namespace StockMarket.WPF
             services.AddSingleton<IViewModelFactory<TopStocksViewModel>, TopStocksViewModelFactory>();
             services.AddSingleton<IViewModelFactory<PortfolioViewModel>, PortfolioViewModelFactory>();
             services.AddSingleton<IViewModelFactory<ChartViewModel>, ChartViewModelFactory>();
+            services.AddSingleton<IViewModelFactory<LoginViewModel>, LoginViewModelFactory>();
             services.AddScoped<BuyViewModel>(); // retains the state (no deps injection)
 
             services.AddScoped<INavigator, Navigator>();
+            services.AddScoped<IAuthenticator, Authenticator>();
             services.AddScoped<MainViewModel>();
 
             services.AddScoped<MainWindow>(s => new MainWindow(s.GetRequiredService<MainViewModel>()));
