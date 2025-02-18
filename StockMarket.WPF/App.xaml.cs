@@ -13,6 +13,8 @@ using StockMarket.EntityFramework;
 using StockMarket.WPF.States.Navigators;
 using StockMarket.WPF.ViewModels.Factories;
 using StockMarket.WPF;
+using StockMarket.Domain.Services.Authentication;
+using Microsoft.AspNet.Identity;
 
 
 namespace StockMarket.WPF
@@ -21,9 +23,11 @@ namespace StockMarket.WPF
     public partial class App : Application
     {
         protected override async void OnStartup(StartupEventArgs e)
-        {
-           
+        {           
             IServiceProvider serviceProvider = CreateServiceProvider();
+
+            IAuthenticationService authentication = serviceProvider.GetService<IAuthenticationService>();
+            authentication.Login("User1", "test1234");
 
             //Window window = new MainWindow();
             //window.DataContext = new MainViewModel();
@@ -47,7 +51,10 @@ namespace StockMarket.WPF
             IServiceCollection services = new ServiceCollection();
 
             services.AddSingleton<DesignTimeDbContextFactory>();
+            services.AddSingleton<IAuthenticationService, AuthenticationService>();
             services.AddSingleton<IDataService<Account>, AccountDataService>();
+            services.AddSingleton<IAccountService, AccountDataService>();
+            services.AddSingleton<IPasswordHasher, PasswordHasher>();
             services.AddSingleton<IStockService, StockPriceService>();
             services.AddSingleton<IBuyStockService, BuyStockService>();
             services.AddSingleton<ITopStocksService, TopStocksService>();

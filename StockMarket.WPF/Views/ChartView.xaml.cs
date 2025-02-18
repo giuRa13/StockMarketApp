@@ -22,8 +22,7 @@ namespace StockMarket.WPF.Views
     /// </summary>
     public partial class ChartView : UserControl
     {
-       
-        //string date = "2024-01-01";
+     
         string date = "";
         string ticker = "TSLA";
         List<OHLC> prices = new();
@@ -39,7 +38,7 @@ namespace StockMarket.WPF.Views
         {
             InitializeComponent();
 
-            DrawGraph();
+            //DrawGraph();
         }
 
         private async void DrawGraph()

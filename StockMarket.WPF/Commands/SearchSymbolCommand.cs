@@ -14,11 +14,8 @@ using Newtonsoft.Json;
 using System.Diagnostics;
 using System.Net.Http;
 using System.Reflection.Emit;
-using OxyPlot.Axes;
-using OxyPlot.Series;
-using OxyPlot;
 using StockMarket.WPF.Models;
-using OxyPlot.Wpf;
+using System.Windows.Media;
 
 namespace StockMarket.WPF.Commands
 {
@@ -52,7 +49,12 @@ namespace StockMarket.WPF.Commands
                 string date = "";
                 ChartData data = await _stockService.GetHistorical(_viewModel.Symbol, date);
                 _viewModel.ChartData = data;
-                
+                _viewModel.Change = data.historical[0].changePercent;
+                if (_viewModel.Change > 0)
+                    _viewModel.Foreground = new SolidColorBrush(System.Windows.Media.Color.FromArgb(255, 8, 153, 129));
+                else
+                    _viewModel.Foreground = new SolidColorBrush(System.Windows.Media.Color.FromArgb(255, 255, 82, 82));
+
                 _viewModel.prices.Clear();
     
                 foreach (var result in data.historical)

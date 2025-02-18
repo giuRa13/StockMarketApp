@@ -10,7 +10,7 @@ using StockMarket.Domain.Models;
 
 namespace StockMarket.EntityFramework.Services
 {
-    public class AccountDataService : IDataService<Account>
+    public class AccountDataService : IAccountService
     {
 
         private readonly DesignTimeDbContextFactory _dbContextFactory;
@@ -42,7 +42,10 @@ namespace StockMarket.EntityFramework.Services
         {
             using (StockMarketDbContext context = _dbContextFactory.CreateDbContext())
             {
-                Account entity = await context.Accounts.Include(a => a.AssetTransactions).FirstOrDefaultAsync((e) => e.Id == id);
+                Account entity = await context.Accounts
+                    .Include(a => a.AccountHolder)
+                    .Include(a => a.AssetTransactions)
+                    .FirstOrDefaultAsync((e) => e.Id == id);
 
                 return entity;
             }
@@ -52,12 +55,37 @@ namespace StockMarket.EntityFramework.Services
         {
             using (StockMarketDbContext context = _dbContextFactory.CreateDbContext())
             {
-                IEnumerable<Account> entities = await context.Accounts.Include(a => a.AssetTransactions).ToListAsync();
+                IEnumerable<Account> entities = await context.Accounts
+                    .Include(a => a.AccountHolder)
+                    .Include(a => a.AssetTransactions)
+                    .ToListAsync();
 
                 return entities;
             }
         }
 
-    
+        public async Task<Account> GetByUsername(string username)
+        {
+            using (StockMarketDbContext context = _dbContextFactory.CreateDbContext())
+            {
+                 return await context.Accounts
+                    .Include(a => a.AccountHolder)
+                    .Include(a => a.AssetTransactions)
+                    .FirstOrDefaultAsync(a => a.AccountHolder.Username == username);
+            };
+        }
+
+        public async Task<Account> GetByEmail(string email)
+        {
+            using (StockMarketDbContext context = _dbContextFactory.CreateDbContext())
+            {
+                return await context.Accounts
+                    .Include(a => a.AccountHolder)
+                    .Include(a => a.AssetTransactions)
+                    .FirstOrDefaultAsync(a => a.AccountHolder.Email == email);
+            }
+        }
+
+
     }
 }
